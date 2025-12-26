@@ -2,9 +2,16 @@
 
 A tiny cli tool for tracing timestamps for http requests during debugging session and performance tests.
 
+### Why this ?
+Scenario: assume your service takes too long to respond on a request (eg. 5 seconds) and you dont know at what stage does 
+your request takes longer eg. at DNS resolution (to troubleshoot your DNS server), is it TLS handshaking stage (to fix your gateway server),
+is it the connection itself to the server? So to avoid a guess-work hence `httptrace`
+
+Originally inspired by the Golang `httptrace` stdlib itself - Read more: https://pkg.go.dev/net/http/httptrace
+
 ### Install
 
-- For a Go-supporting machine:
+- For a Golang-supporting machine:
 
 Requires Go 1.20+
 
