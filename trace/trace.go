@@ -8,7 +8,7 @@ import (
 	"net/http/httptrace"
 	"strings"
 	"time"
-	"fmt"
+
 )
 
 
@@ -86,7 +86,7 @@ func Run(ctx context.Context, opt Options) (*Result, error) {
 		},
 		TLSHandshakeDone: func(state tls.ConnectionState, err error) {
 			result.TLSDuration = time.Since(last)
-			result.TLSVersion = fmt.Sprintf("%d", state.Version)
+			result.TLSVersion = tlsVersion(state.Version)
 			result.Cipher = tls.CipherSuiteName(state.CipherSuite)
 			last = time.Now()
 		},
@@ -109,3 +109,13 @@ func Run(ctx context.Context, opt Options) (*Result, error) {
 }
 
 
+func tlsVersion(v uint16) string {
+	switch v {
+	case tls.VersionTLS13:
+		return "v1.3"
+	case tls.VersionTLS12:
+		return "v1.2"
+	default:
+		return "UNKNOWN"
+	}
+}
