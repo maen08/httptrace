@@ -20,7 +20,7 @@ go install github.com/maen08/httptrace@latest
 
 ```
 
-- For other kinds of machine, download a binary ready for usage
+- For other kinds of machine, download a binary ready for usage [here](https://github.com/maen08/httptrace/releases/tag/v0.1)
 
 ### Usage
 
